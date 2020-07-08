@@ -142,7 +142,7 @@
           <Property Name="change_amount" Type="int" />
           <Property Name="needs_update_creditcard" Type="bit" />
           <Property Name="updated_at_recurring_credit" Type="datetime" />
-          <Property Name="article_id" Type="int" Nullable="false" />
+          <Property Name="article_id" Type="int" />
         </EntityType>
         <EntityType Name="UserManage">
           <Key>
@@ -323,7 +323,7 @@
           <Property Name="change_amount" Type="Int32" />
           <Property Name="needs_update_creditcard" Type="Boolean" />
           <Property Name="updated_at_recurring_credit" Type="DateTime" Precision="3" />
-          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="article_id" Type="Int32" />
         </EntityType>
         <EntityContainer Name="crtEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cart" EntityType="Self.Cart" />

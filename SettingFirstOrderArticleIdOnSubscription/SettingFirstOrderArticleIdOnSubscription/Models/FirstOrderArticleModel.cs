@@ -9,6 +9,7 @@ namespace SettingFirstOrderArticleIdOnSubscription.Models
     public class FirstOrderArticleModel
     {
         public int CustomerNumber { get; set; }
+        public string RecurringId { get; set; }
         public DateTime? SubscriptionCreatedAt { get; set; }
         public string SessionId { get; set; }
         public int? ProductId { get; set; }

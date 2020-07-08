@@ -29,8 +29,10 @@ namespace SettingFirstOrderArticleIdOnSubscription
                     var firstOrderArticleIdList = FirstOrderOnSubscriptionUtil.GetFirstOrderArticleId(firstOrderList);
                     foreach (var item in firstOrderArticleIdList)
                     {
-                        logUtil.ConsoleWriteLineWithInfoLog($"{item.CustomerNumber};{item.SubscriptionCreatedAt};{item.SessionId};{item.ProductId};{item.Placed_Order};");
+                        logUtil.ConsoleWriteLineWithInfoLog($"{item.CustomerNumber};{item.RecurringId};{item.SubscriptionCreatedAt};{item.SessionId};{item.ProductId};{item.Placed_Order};");
+                        FirstOrderOnSubscriptionUtil.UpdateSubscriptionArticleId(item);
                     }
+
                     #endregion
                     logUtil.ConsoleWriteLineWithInfoLog("End App.");
                 }

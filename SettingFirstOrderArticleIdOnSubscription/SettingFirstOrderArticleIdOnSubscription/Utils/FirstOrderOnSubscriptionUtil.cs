@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SettingFirstOrderArticleIdOnSubscription.Models;
+using SettingFirstOrderArticleIdOnSubscription.Models.EF;
 
 namespace SettingFirstOrderArticleIdOnSubscription.Utils
 {
@@ -28,21 +29,19 @@ namespace SettingFirstOrderArticleIdOnSubscription.Utils
                     //});
 
                     var t_subscriptionList = from subsc in _db.t_subscription
-                                             where subsc.status == status
+                                             where subsc.status == status && subsc.article_id == null
                                              orderby subsc.created_at
                                              select new FirstOrderArticleModel()
                                              {
                                                  CustomerNumber = subsc.customer_number,
-                                                 SubscriptionCreatedAt = subsc.created_at
+                                                 SubscriptionCreatedAt = subsc.created_at,
+                                                 RecurringId = subsc.recurring_id
                                              };
-
-                    return new List<FirstOrderArticleModel>();
+                    return t_subscriptionList.ToList();
                 }
             }
             catch(Exception ex)
             {
-                _logUtil.ConsoleWriteLineWithErrorLog("Exception on GetFirstOrder.", ex);
-                _logUtil.ConsoleWriteLineWithErrorLog("Exception on GetFirstOrder.", ex.InnerException);
                 throw;
             }
         }
@@ -54,25 +53,37 @@ namespace SettingFirstOrderArticleIdOnSubscription.Utils
             {
                 foreach (var item in firstOrderArticleListForSubscription)
                 {
-                    var firstOrderArticle = ( from um in _db.UserManages
-                                      join om in _db.OrderManages on um.SessionId equals om.SessionId
-                                      join cart in _db.Carts on um.SessionId equals cart.SessionId
-                                      where um.customer == item.CustomerNumber
-                                      orderby um.PlacedOrder descending
-                                      select new FirstOrderArticleModel()
-                                      {
-                                          SessionId = om.SessionId,
-                                          CustomerNumber = item.CustomerNumber,
-                                          SubscriptionCreatedAt = item.SubscriptionCreatedAt,
-                                          ProductId = (int)cart.ProductId,
-                                          Placed_Order = (DateTime)um.PlacedOrder,
-                                      } ).FirstOrDefault();
+                    var firstOrderArticle = ( from um in _db.UserManage
+                                              join om in _db.OrderManage on um.SessionId equals om.SessionId
+                                              join cart in _db.Cart on um.SessionId equals cart.SessionId
+                                              where um.customer == item.CustomerNumber
+                                              orderby um.PlacedOrder descending
+                                              select new FirstOrderArticleModel()
+                                              {
+                                                  SessionId = om.SessionId,
+                                                  CustomerNumber = item.CustomerNumber,
+                                                  RecurringId = item.RecurringId,
+                                                  SubscriptionCreatedAt = item.SubscriptionCreatedAt,
+                                                  ProductId = (int)cart.ProductId,
+                                                  Placed_Order = (DateTime)um.PlacedOrder,
+                                              } ).FirstOrDefault();
                     firstOrderArticleList.Add(firstOrderArticle);
-
                 }
             }
 
             return firstOrderArticleList;
+        }
+
+        internal static bool UpdateSubscriptionArticleId(FirstOrderArticleModel firstOrderArticle)
+        {
+            using (var _db = new crtEntities())
+            {
+                var t_subscription = _db.t_subscription.SingleOrDefault(
+                    c => c.customer_number == firstOrderArticle.CustomerNumber && c.recurring_id == firstOrderArticle.RecurringId);
+                t_subscription.article_id = firstOrderArticle.ProductId;
+
+                return _db.SaveChanges() > 0;
+            }
         }
     }
 }

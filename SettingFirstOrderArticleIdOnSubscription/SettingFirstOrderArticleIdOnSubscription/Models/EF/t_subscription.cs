@@ -30,6 +30,6 @@ namespace SettingFirstOrderArticleIdOnSubscription.Models.EF
         public Nullable<int> change_amount { get; set; }
         public Nullable<bool> needs_update_creditcard { get; set; }
         public Nullable<System.DateTime> updated_at_recurring_credit { get; set; }
-        public int article_id { get; set; }
+        public Nullable<int> article_id { get; set; }
     }
 }

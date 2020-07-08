@@ -17,18 +17,11 @@ namespace SettingFirstOrderArticleIdOnSubscription.Models.EF
     
     public partial class crtEntities : DbContext
     {
-        public crtEntities(bool isOpen = false)
+        public crtEntities()
             : base("name=crtEntities")
         {
-            if (isOpen)
-            {
-                this.Database.Connection.Open();
-                //対象キーのオープン
-                this.OpenSymmetricKey();
-            }
-
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
