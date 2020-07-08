@@ -6,8 +6,8 @@
     <ProjectGuid>{E8ECBE5A-722D-4C48-BCDE-1AF2ED2E000A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleBaseApp.Tests</RootNamespace>
-    <AssemblyName>ConsoleBaseApp.Tests</AssemblyName>
+    <RootNamespace>SettingFirstOrderArticleIdOnSubscription.Tests</RootNamespace>
+    <AssemblyName>SettingFirstOrderArticleIdOnSubscription.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -76,9 +76,9 @@
     <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleBaseApp\ConsoleBaseApp.csproj">
+    <ProjectReference Include="..\SettingFirstOrderArticleIdOnSubscription\SettingFirstOrderArticleIdOnSubscription.csproj">
       <Project>{58078554-b6ff-441b-b432-d2b40f266ab9}</Project>
-      <Name>ConsoleBaseApp</Name>
+      <Name>SettingFirstOrderArticleIdOnSubscription</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

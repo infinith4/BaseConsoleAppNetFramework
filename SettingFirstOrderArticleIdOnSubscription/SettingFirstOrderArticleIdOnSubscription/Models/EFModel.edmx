@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="crtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="SubItemId" />
+          </Key>
+          <Property Name="SessionId" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="ItemId" Type="smallint" Nullable="false" />
+          <Property Name="SubItemId" Type="smallint" Nullable="false" />
+          <Property Name="Related_ItemId" Type="smallint" />
+          <Property Name="Related_SubItemId" Type="smallint" />
+          <Property Name="GoodsType" Type="tinyint" />
+          <Property Name="CategoryId" Type="varchar" MaxLength="5" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UnitId" Type="smallint" />
+          <Property Name="CompType" Type="tinyint" />
+          <Property Name="CompJobFile" Type="varchar" MaxLength="256" />
+          <Property Name="IsDoneImageComp" Type="tinyint" />
+          <Property Name="CompErr" Type="varchar" MaxLength="128" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="ProductName" Type="varchar" MaxLength="128" />
+          <Property Name="CartAddText1" Type="varchar" MaxLength="128" />
+          <Property Name="CartAddText2" Type="varchar" MaxLength="128" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="Qty" Type="smallint" />
+          <Property Name="UnitText" Type="varchar" MaxLength="6" />
+          <Property Name="SubTotalPrice" Type="money" />
+          <Property Name="orgSubTotalPrice" Type="money" />
+          <Property Name="PreviewImg" Type="smallint" />
+          <Property Name="OptionId" Type="smallint" />
+          <Property Name="TemplateId" Type="varchar" MaxLength="128" />
+          <Property Name="WorkPrice" Type="money" />
+          <Property Name="QtyEditUrl" Type="varchar" MaxLength="512" />
+          <Property Name="Details" Type="varchar" MaxLength="128" />
+          <Property Name="DataDetails" Type="varchar" MaxLength="1024" />
+          <Property Name="SerialNumber" Type="bigint" />
+          <Property Name="ImageCompletion" Type="bit" />
+          <Property Name="RestoreUrl" Type="varchar" MaxLength="256" />
+          <Property Name="RestorePassword" Type="varchar" MaxLength="32" />
+          <Property Name="RestoreExpireDate" Type="datetime" />
+          <Property Name="sendImageType" Type="smallint" />
+          <Property Name="I2Flg" Type="smallint" />
+        </EntityType>
+        <EntityType Name="OrderManage">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="SiteSession" Type="varchar" MaxLength="36" />
+          <Property Name="TEMP_ORDER_ID" Type="varchar" MaxLength="16" />
+          <Property Name="TEMP_ORDER_DETAIL_ID" Type="varchar" MaxLength="16" />
+          <Property Name="ORDER_ACTION" Type="smallint" />
+          <Property Name="ORDER_ID" Type="varchar" MaxLength="32" />
+          <Property Name="EC_ORDER_DATE" Type="varchar" MaxLength="32" />
+          <Property Name="ShipType" Type="smallint" />
+          <Property Name="PayType" Type="smallint" />
+          <Property Name="ShipDeliveryNo" Type="varchar" MaxLength="32" />
+          <Property Name="ShipmentDay" Type="datetime" />
+          <Property Name="PRINT_SUBTOTAL" Type="varchar" MaxLength="20" />
+          <Property Name="DELIVERY_SUBSTITUTE_FEE" Type="varchar" MaxLength="20" />
+          <Property Name="ShipFee" Type="varchar" MaxLength="20" />
+          <Property Name="PaymentFee" Type="varchar" MaxLength="20" />
+          <Property Name="PRINT_TOTAL" Type="varchar" MaxLength="20" />
+          <Property Name="CAMPAIGN_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="DISCOUNT_RATE" Type="varchar" MaxLength="20" />
+          <Property Name="CAMPAIGN_CODE" Type="varchar" MaxLength="20" />
+          <Property Name="LASTNAME" Type="varbinary(max)" />
+          <Property Name="FIRSTNAME" Type="varbinary(max)" />
+          <Property Name="LASTNAME_KANA" Type="varbinary(max)" />
+          <Property Name="FIRSTNAME_KANA" Type="varbinary(max)" />
+          <Property Name="POST1" Type="varbinary(max)" />
+          <Property Name="POST2" Type="varbinary(max)" />
+          <Property Name="ADDRESS1" Type="varbinary(max)" />
+          <Property Name="ADDRESS2" Type="varbinary(max)" />
+          <Property Name="ADDRESS3" Type="varbinary(max)" />
+          <Property Name="ADDRESS4" Type="varbinary(max)" />
+          <Property Name="ADDRESS5" Type="varbinary(max)" />
+          <Property Name="TEL1" Type="varbinary(max)" />
+          <Property Name="TEL2" Type="varbinary(max)" />
+          <Property Name="TEL3" Type="varbinary(max)" />
+          <Property Name="ORDER_EMAIL" Type="varbinary(max)" />
+          <Property Name="CompanyName" Type="varbinary(max)" />
+          <Property Name="Division" Type="varbinary(max)" />
+          <Property Name="Title" Type="varbinary(max)" />
+          <Property Name="DELIVERY_LASTNAME" Type="varbinary(max)" />
+          <Property Name="DELIVERY_FIRSTNAME" Type="varbinary(max)" />
+          <Property Name="DELIVERY_LASTNAME_KANA" Type="varbinary(max)" />
+          <Property Name="DELIVERY_FIRSTNAME_KANA" Type="varbinary(max)" />
+          <Property Name="DELIVERY_POST1" Type="varbinary(max)" />
+          <Property Name="DELIVERY_POST2" Type="varbinary(max)" />
+          <Property Name="DELIVERY_ADDRESS1" Type="varbinary(max)" />
+          <Property Name="DELIVERY_ADDRESS2" Type="varbinary(max)" />
+          <Property Name="DELIVERY_ADDRESS3" Type="varbinary(max)" />
+          <Property Name="DELIVERY_ADDRESS4" Type="varbinary(max)" />
+          <Property Name="DELIVERY_ADDRESS5" Type="varbinary(max)" />
+          <Property Name="DELIVERY_TEL1" Type="varbinary(max)" />
+          <Property Name="DELIVERY_TEL2" Type="varbinary(max)" />
+          <Property Name="DELIVERY_TEL3" Type="varbinary(max)" />
+          <Property Name="DELIVERY_CompanyName" Type="varbinary(max)" />
+          <Property Name="DELIVERY_Division" Type="varbinary(max)" />
+          <Property Name="DELIVERY_Title" Type="varbinary(max)" />
+          <Property Name="CouponId" Type="varchar" MaxLength="32" />
+          <Property Name="Sold_Date" Type="datetime" />
+          <Property Name="Cancel_Date" Type="datetime" />
+          <Property Name="LabSend_Date" Type="datetime" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1024" />
+          <Property Name="WebDeliType" Type="smallint" Nullable="false" />
+          <Property Name="Insert_date" Type="datetime" />
+          <Property Name="RetryCount" Type="int" />
+          <Property Name="HistoryId" Type="varchar" MaxLength="32" />
+          <Property Name="TaskId" Type="int" />
+          <Property Name="date_EC_DATE" Type="datetime" />
+          <Property Name="PRINT_SUBTOTAL_ORG" Type="varchar" MaxLength="20" />
+          <Property Name="CouponCanceled" Type="bit" />
+          <Property Name="ORDER_EMAIL_HASH" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="t_subscription">
+          <Key>
+            <PropertyRef Name="customer_number" />
+            <PropertyRef Name="recurring_id" />
+          </Key>
+          <Property Name="customer_number" Type="int" Nullable="false" />
+          <Property Name="recurring_id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="ordered" Type="bit" Nullable="false" />
+          <Property Name="facter" Type="int" Nullable="false" />
+          <Property Name="start_at" Type="datetime" Nullable="false" />
+          <Property Name="end_at" Type="datetime" Nullable="false" />
+          <Property Name="duration_months" Type="int" Nullable="false" />
+          <Property Name="remarks" Type="varchar" MaxLength="128" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="has_error" Type="bit" Nullable="false" />
+          <Property Name="needs_gmo_cancel" Type="bit" Nullable="false" />
+          <Property Name="change_amount" Type="int" />
+          <Property Name="needs_update_creditcard" Type="bit" />
+          <Property Name="updated_at_recurring_credit" Type="datetime" />
+          <Property Name="article_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserManage">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="TEMP_ORDER_ID" Type="varchar" MaxLength="16" />
+          <Property Name="UserRank" Type="tinyint" />
+          <Property Name="customer" Type="int" />
+          <Property Name="AspJointID" Type="varchar" MaxLength="128" />
+          <Property Name="ASP_ID" Type="varchar" MaxLength="8" />
+          <Property Name="AspSession" Type="varchar" MaxLength="128" />
+          <Property Name="AspUserID" Type="varchar" MaxLength="128" />
+          <Property Name="PlacedOrder" Type="datetime" />
+          <Property Name="HiResImgPath" Type="varchar" MaxLength="256" />
+          <Property Name="HiResDelSchedule" Type="datetime" />
+          <Property Name="IsClearHiRes" Type="bit" />
+          <Property Name="WorkImgUrl" Type="varchar" MaxLength="256" />
+          <Property Name="WorkDelSchedule" Type="datetime" />
+          <Property Name="IsClearWork" Type="bit" />
+          <Property Name="AccessDateTime" Type="datetime" />
+          <Property Name="LandingPage" Type="varchar" MaxLength="256" />
+          <Property Name="QuerryString" Type="varchar" MaxLength="256" />
+          <Property Name="UserIpAddress" Type="varchar" MaxLength="16" />
+          <Property Name="UserHostname" Type="varchar" MaxLength="128" />
+          <Property Name="Refer" Type="varchar" MaxLength="256" />
+          <Property Name="UserAgent" Type="varchar" MaxLength="128" />
+          <Property Name="UserLanguage" Type="varchar" MaxLength="10" />
+          <Property Name="ASPSubID" Type="varchar" MaxLength="8" />
+          <Property Name="CouponId" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <Function Name="CloseSymmetricKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="OpenSymmetricKey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="crtModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderManage" EntityType="Self.OrderManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_subscription" EntityType="Self.t_subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserManage" EntityType="Self.UserManage" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="crtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="SubItemId" />
+          </Key>
+          <Property Name="SessionId" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemId" Type="Int16" Nullable="false" />
+          <Property Name="SubItemId" Type="Int16" Nullable="false" />
+          <Property Name="Related_ItemId" Type="Int16" />
+          <Property Name="Related_SubItemId" Type="Int16" />
+          <Property Name="GoodsType" Type="Byte" />
+          <Property Name="CategoryId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UnitId" Type="Int16" />
+          <Property Name="CompType" Type="Byte" />
+          <Property Name="CompJobFile" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="IsDoneImageComp" Type="Byte" />
+          <Property Name="CompErr" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CartAddText1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CartAddText2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Qty" Type="Int16" />
+          <Property Name="UnitText" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="orgSubTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PreviewImg" Type="Int16" />
+          <Property Name="OptionId" Type="Int16" />
+          <Property Name="TemplateId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="QtyEditUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DataDetails" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNumber" Type="Int64" />
+          <Property Name="ImageCompletion" Type="Boolean" />
+          <Property Name="RestoreUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="RestorePassword" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="RestoreExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="sendImageType" Type="Int16" />
+          <Property Name="I2Flg" Type="Int16" />
+        </EntityType>
+        <EntityType Name="OrderManage">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteSession" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_ORDER_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_ORDER_DETAIL_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_ACTION" Type="Int16" />
+          <Property Name="ORDER_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="EC_ORDER_DATE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ShipType" Type="Int16" />
+          <Property Name="PayType" Type="Int16" />
+          <Property Name="ShipDeliveryNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ShipmentDay" Type="DateTime" Precision="3" />
+          <Property Name="PRINT_SUBTOTAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DELIVERY_SUBSTITUTE_FEE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ShipFee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentFee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRINT_TOTAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CAMPAIGN_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DISCOUNT_RATE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CAMPAIGN_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FIRSTNAME" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LASTNAME_KANA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FIRSTNAME_KANA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="POST1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="POST2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ADDRESS1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ADDRESS2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ADDRESS3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ADDRESS4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ADDRESS5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TEL1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TEL2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TEL3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ORDER_EMAIL" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompanyName" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Division" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Title" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_LASTNAME" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_FIRSTNAME" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_LASTNAME_KANA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_FIRSTNAME_KANA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_POST1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_POST2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_ADDRESS1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_ADDRESS2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_ADDRESS3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_ADDRESS4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_ADDRESS5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_TEL1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_TEL2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_TEL3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_CompanyName" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_Division" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELIVERY_Title" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CouponId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Sold_Date" Type="DateTime" Precision="3" />
+          <Property Name="Cancel_Date" Type="DateTime" Precision="3" />
+          <Property Name="LabSend_Date" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="WebDeliType" Type="Int16" Nullable="false" />
+          <Property Name="Insert_date" Type="DateTime" Precision="3" />
+          <Property Name="RetryCount" Type="Int32" />
+          <Property Name="HistoryId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TaskId" Type="Int32" />
+          <Property Name="date_EC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PRINT_SUBTOTAL_ORG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CouponCanceled" Type="Boolean" />
+          <Property Name="ORDER_EMAIL_HASH" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_subscription">
+          <Key>
+            <PropertyRef Name="customer_number" />
+            <PropertyRef Name="recurring_id" />
+          </Key>
+          <Property Name="customer_number" Type="Int32" Nullable="false" />
+          <Property Name="recurring_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="ordered" Type="Boolean" Nullable="false" />
+          <Property Name="facter" Type="Int32" Nullable="false" />
+          <Property Name="start_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="duration_months" Type="Int32" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="has_error" Type="Boolean" Nullable="false" />
+          <Property Name="needs_gmo_cancel" Type="Boolean" Nullable="false" />
+          <Property Name="change_amount" Type="Int32" />
+          <Property Name="needs_update_creditcard" Type="Boolean" />
+          <Property Name="updated_at_recurring_credit" Type="DateTime" Precision="3" />
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserManage">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TEMP_ORDER_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="UserRank" Type="Byte" />
+          <Property Name="customer" Type="Int32" />
+          <Property Name="AspJointID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ASP_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="AspSession" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="AspUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PlacedOrder" Type="DateTime" Precision="3" />
+          <Property Name="HiResImgPath" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="HiResDelSchedule" Type="DateTime" Precision="3" />
+          <Property Name="IsClearHiRes" Type="Boolean" />
+          <Property Name="WorkImgUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDelSchedule" Type="DateTime" Precision="3" />
+          <Property Name="IsClearWork" Type="Boolean" />
+          <Property Name="AccessDateTime" Type="DateTime" Precision="3" />
+          <Property Name="LandingPage" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="QuerryString" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UserIpAddress" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="UserHostname" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Refer" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UserAgent" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ASPSubID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CouponId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="crtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="OrderManages" EntityType="Self.OrderManage" />
+          <EntitySet Name="t_subscription" EntityType="Self.t_subscription" />
+          <EntitySet Name="UserManages" EntityType="Self.UserManage" />
+          <FunctionImport Name="CloseSymmetricKey" />
+          <FunctionImport Name="OpenSymmetricKey" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="crtModelStoreContainer" CdmEntityContainer="crtEntities">
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="crtModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SubItemId" ColumnName="SubItemId" />
+                <ScalarProperty Name="Related_ItemId" ColumnName="Related_ItemId" />
+                <ScalarProperty Name="Related_SubItemId" ColumnName="Related_SubItemId" />
+                <ScalarProperty Name="GoodsType" ColumnName="GoodsType" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="CompType" ColumnName="CompType" />
+                <ScalarProperty Name="CompJobFile" ColumnName="CompJobFile" />
+                <ScalarProperty Name="IsDoneImageComp" ColumnName="IsDoneImageComp" />
+                <ScalarProperty Name="CompErr" ColumnName="CompErr" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CartAddText1" ColumnName="CartAddText1" />
+                <ScalarProperty Name="CartAddText2" ColumnName="CartAddText2" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitText" ColumnName="UnitText" />
+                <ScalarProperty Name="SubTotalPrice" ColumnName="SubTotalPrice" />
+                <ScalarProperty Name="orgSubTotalPrice" ColumnName="orgSubTotalPrice" />
+                <ScalarProperty Name="PreviewImg" ColumnName="PreviewImg" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="WorkPrice" ColumnName="WorkPrice" />
+                <ScalarProperty Name="QtyEditUrl" ColumnName="QtyEditUrl" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="DataDetails" ColumnName="DataDetails" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="ImageCompletion" ColumnName="ImageCompletion" />
+                <ScalarProperty Name="RestoreUrl" ColumnName="RestoreUrl" />
+                <ScalarProperty Name="RestorePassword" ColumnName="RestorePassword" />
+                <ScalarProperty Name="RestoreExpireDate" ColumnName="RestoreExpireDate" />
+                <ScalarProperty Name="sendImageType" ColumnName="sendImageType" />
+                <ScalarProperty Name="I2Flg" ColumnName="I2Flg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderManages">
+            <EntityTypeMapping TypeName="crtModel.OrderManage">
+              <MappingFragment StoreEntitySet="OrderManage">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="SiteSession" ColumnName="SiteSession" />
+                <ScalarProperty Name="TEMP_ORDER_ID" ColumnName="TEMP_ORDER_ID" />
+                <ScalarProperty Name="TEMP_ORDER_DETAIL_ID" ColumnName="TEMP_ORDER_DETAIL_ID" />
+                <ScalarProperty Name="ORDER_ACTION" ColumnName="ORDER_ACTION" />
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="EC_ORDER_DATE" ColumnName="EC_ORDER_DATE" />
+                <ScalarProperty Name="ShipType" ColumnName="ShipType" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+                <ScalarProperty Name="ShipDeliveryNo" ColumnName="ShipDeliveryNo" />
+                <ScalarProperty Name="ShipmentDay" ColumnName="ShipmentDay" />
+                <ScalarProperty Name="PRINT_SUBTOTAL" ColumnName="PRINT_SUBTOTAL" />
+                <ScalarProperty Name="DELIVERY_SUBSTITUTE_FEE" ColumnName="DELIVERY_SUBSTITUTE_FEE" />
+                <ScalarProperty Name="ShipFee" ColumnName="ShipFee" />
+                <ScalarProperty Name="PaymentFee" ColumnName="PaymentFee" />
+                <ScalarProperty Name="PRINT_TOTAL" ColumnName="PRINT_TOTAL" />
+                <ScalarProperty Name="CAMPAIGN_NAME" ColumnName="CAMPAIGN_NAME" />
+                <ScalarProperty Name="DISCOUNT_RATE" ColumnName="DISCOUNT_RATE" />
+                <ScalarProperty Name="CAMPAIGN_CODE" ColumnName="CAMPAIGN_CODE" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="LASTNAME_KANA" ColumnName="LASTNAME_KANA" />
+                <ScalarProperty Name="FIRSTNAME_KANA" ColumnName="FIRSTNAME_KANA" />
+                <ScalarProperty Name="POST1" ColumnName="POST1" />
+                <ScalarProperty Name="POST2" ColumnName="POST2" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+                <ScalarProperty Name="ADDRESS4" ColumnName="ADDRESS4" />
+                <ScalarProperty Name="ADDRESS5" ColumnName="ADDRESS5" />
+                <ScalarProperty Name="TEL1" ColumnName="TEL1" />
+                <ScalarProperty Name="TEL2" ColumnName="TEL2" />
+                <ScalarProperty Name="TEL3" ColumnName="TEL3" />
+                <ScalarProperty Name="ORDER_EMAIL" ColumnName="ORDER_EMAIL" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DELIVERY_LASTNAME" ColumnName="DELIVERY_LASTNAME" />
+                <ScalarProperty Name="DELIVERY_FIRSTNAME" ColumnName="DELIVERY_FIRSTNAME" />
+                <ScalarProperty Name="DELIVERY_LASTNAME_KANA" ColumnName="DELIVERY_LASTNAME_KANA" />
+                <ScalarProperty Name="DELIVERY_FIRSTNAME_KANA" ColumnName="DELIVERY_FIRSTNAME_KANA" />
+                <ScalarProperty Name="DELIVERY_POST1" ColumnName="DELIVERY_POST1" />
+                <ScalarProperty Name="DELIVERY_POST2" ColumnName="DELIVERY_POST2" />
+                <ScalarProperty Name="DELIVERY_ADDRESS1" ColumnName="DELIVERY_ADDRESS1" />
+                <ScalarProperty Name="DELIVERY_ADDRESS2" ColumnName="DELIVERY_ADDRESS2" />
+                <ScalarProperty Name="DELIVERY_ADDRESS3" ColumnName="DELIVERY_ADDRESS3" />
+                <ScalarProperty Name="DELIVERY_ADDRESS4" ColumnName="DELIVERY_ADDRESS4" />
+                <ScalarProperty Name="DELIVERY_ADDRESS5" ColumnName="DELIVERY_ADDRESS5" />
+                <ScalarProperty Name="DELIVERY_TEL1" ColumnName="DELIVERY_TEL1" />
+                <ScalarProperty Name="DELIVERY_TEL2" ColumnName="DELIVERY_TEL2" />
+                <ScalarProperty Name="DELIVERY_TEL3" ColumnName="DELIVERY_TEL3" />
+                <ScalarProperty Name="DELIVERY_CompanyName" ColumnName="DELIVERY_CompanyName" />
+                <ScalarProperty Name="DELIVERY_Division" ColumnName="DELIVERY_Division" />
+                <ScalarProperty Name="DELIVERY_Title" ColumnName="DELIVERY_Title" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+                <ScalarProperty Name="Sold_Date" ColumnName="Sold_Date" />
+                <ScalarProperty Name="Cancel_Date" ColumnName="Cancel_Date" />
+                <ScalarProperty Name="LabSend_Date" ColumnName="LabSend_Date" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="WebDeliType" ColumnName="WebDeliType" />
+                <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="date_EC_DATE" ColumnName="date_EC_DATE" />
+                <ScalarProperty Name="PRINT_SUBTOTAL_ORG" ColumnName="PRINT_SUBTOTAL_ORG" />
+                <ScalarProperty Name="CouponCanceled" ColumnName="CouponCanceled" />
+                <ScalarProperty Name="ORDER_EMAIL_HASH" ColumnName="ORDER_EMAIL_HASH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_subscription">
+            <EntityTypeMapping TypeName="crtModel.t_subscription">
+              <MappingFragment StoreEntitySet="t_subscription">
+                <ScalarProperty Name="customer_number" ColumnName="customer_number" />
+                <ScalarProperty Name="recurring_id" ColumnName="recurring_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ordered" ColumnName="ordered" />
+                <ScalarProperty Name="facter" ColumnName="facter" />
+                <ScalarProperty Name="start_at" ColumnName="start_at" />
+                <ScalarProperty Name="end_at" ColumnName="end_at" />
+                <ScalarProperty Name="duration_months" ColumnName="duration_months" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="has_error" ColumnName="has_error" />
+                <ScalarProperty Name="needs_gmo_cancel" ColumnName="needs_gmo_cancel" />
+                <ScalarProperty Name="change_amount" ColumnName="change_amount" />
+                <ScalarProperty Name="needs_update_creditcard" ColumnName="needs_update_creditcard" />
+                <ScalarProperty Name="updated_at_recurring_credit" ColumnName="updated_at_recurring_credit" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserManages">
+            <EntityTypeMapping TypeName="crtModel.UserManage">
+              <MappingFragment StoreEntitySet="UserManage">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="TEMP_ORDER_ID" ColumnName="TEMP_ORDER_ID" />
+                <ScalarProperty Name="UserRank" ColumnName="UserRank" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="AspJointID" ColumnName="AspJointID" />
+                <ScalarProperty Name="ASP_ID" ColumnName="ASP_ID" />
+                <ScalarProperty Name="AspSession" ColumnName="AspSession" />
+                <ScalarProperty Name="AspUserID" ColumnName="AspUserID" />
+                <ScalarProperty Name="PlacedOrder" ColumnName="PlacedOrder" />
+                <ScalarProperty Name="HiResImgPath" ColumnName="HiResImgPath" />
+                <ScalarProperty Name="HiResDelSchedule" ColumnName="HiResDelSchedule" />
+                <ScalarProperty Name="IsClearHiRes" ColumnName="IsClearHiRes" />
+                <ScalarProperty Name="WorkImgUrl" ColumnName="WorkImgUrl" />
+                <ScalarProperty Name="WorkDelSchedule" ColumnName="WorkDelSchedule" />
+                <ScalarProperty Name="IsClearWork" ColumnName="IsClearWork" />
+                <ScalarProperty Name="AccessDateTime" ColumnName="AccessDateTime" />
+                <ScalarProperty Name="LandingPage" ColumnName="LandingPage" />
+                <ScalarProperty Name="QuerryString" ColumnName="QuerryString" />
+                <ScalarProperty Name="UserIpAddress" ColumnName="UserIpAddress" />
+                <ScalarProperty Name="UserHostname" ColumnName="UserHostname" />
+                <ScalarProperty Name="Refer" ColumnName="Refer" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="UserLanguage" ColumnName="UserLanguage" />
+                <ScalarProperty Name="ASPSubID" ColumnName="ASPSubID" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CloseSymmetricKey" FunctionName="crtModel.Store.CloseSymmetricKey" />
+          <FunctionImportMapping FunctionImportName="OpenSymmetricKey" FunctionName="crtModel.Store.OpenSymmetricKey" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 
-namespace ConsoleBaseApp.Models
+namespace SettingFirstOrderArticleIdOnSubscription.Models
 {
     public class ImportYaml
     {

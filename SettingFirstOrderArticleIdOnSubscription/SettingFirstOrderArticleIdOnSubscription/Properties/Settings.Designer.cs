@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleBaseApp.Properties {
+namespace SettingFirstOrderArticleIdOnSubscription.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

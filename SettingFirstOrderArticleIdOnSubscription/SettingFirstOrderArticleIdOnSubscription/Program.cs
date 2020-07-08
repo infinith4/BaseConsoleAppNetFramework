@@ -1,9 +1,9 @@
-using ConsoleBaseApp.Utils;
+using SettingFirstOrderArticleIdOnSubscription.Utils;
 using log4net;
 using System;
 using System.IO;
 
-namespace ConsoleBaseApp
+namespace SettingFirstOrderArticleIdOnSubscription
 {
     internal class Program
     {
@@ -24,13 +24,19 @@ namespace ConsoleBaseApp
                 {
                     logUtil.ConsoleWriteLineWithInfoLog("Start App.");
                     #region Write Your Program
-                    
+                    //Phase5 の対応のためアルバムあり・なしを判別するためt_subscription.article_id に初月度注文時のArticleId(Cartテーブル)を設定する
+                    var firstOrderList = FirstOrderOnSubscriptionUtil.GetFirstOrder((int)Constants.Subscription.Status.UnderContract);
+                    var firstOrderArticleIdList = FirstOrderOnSubscriptionUtil.GetFirstOrderArticleId(firstOrderList);
+                    foreach (var item in firstOrderArticleIdList)
+                    {
+                        logUtil.ConsoleWriteLineWithInfoLog($"{item.CustomerNumber};{item.SubscriptionCreatedAt};{item.SessionId};{item.ProductId};{item.Placed_Order};");
+                    }
                     #endregion
                     logUtil.ConsoleWriteLineWithInfoLog("End App.");
                 }
                 catch (Exception ex)
                 {
-                    logUtil.ConsoleWriteLineWithErrorLog("Failed ConsoleBaseApp", ex);
+                    logUtil.ConsoleWriteLineWithErrorLog("Failed SettingFirstOrderArticleIdOnSubscription", ex);
                 }
             }
         }

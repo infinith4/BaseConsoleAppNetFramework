@@ -1,8 +1,8 @@
 ﻿using System;
-using ConsoleBaseApp.Utils;
+using SettingFirstOrderArticleIdOnSubscription.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ConsoleBaseApp.Tests.Utils
+namespace SettingFirstOrderArticleIdOnSubscription.Tests.Utils
 {
     [TestClass]
     public class LogUtilTest
