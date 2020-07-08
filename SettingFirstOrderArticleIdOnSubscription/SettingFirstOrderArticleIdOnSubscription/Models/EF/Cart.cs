@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SettingFirstOrderArticleIdOnSubscription.Models
+namespace SettingFirstOrderArticleIdOnSubscription.Models.EF
 {
     using System;
     using System.Collections.Generic;

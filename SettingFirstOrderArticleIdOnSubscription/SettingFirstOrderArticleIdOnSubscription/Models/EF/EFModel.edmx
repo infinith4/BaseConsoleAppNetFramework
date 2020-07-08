@@ -325,11 +325,19 @@
           <Property Name="updated_at_recurring_credit" Type="DateTime" Precision="3" />
           <Property Name="article_id" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="crtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="OrderManage" EntityType="Self.OrderManage" />
+          <EntitySet Name="t_subscription" EntityType="Self.t_subscription" />
+          <EntitySet Name="UserManage" EntityType="crtModel.UserManage" />
+          <FunctionImport Name="CloseSymmetricKey" />
+          <FunctionImport Name="OpenSymmetricKey" />
+        </EntityContainer>
         <EntityType Name="UserManage">
           <Key>
             <PropertyRef Name="SessionId" />
           </Key>
-          <Property Name="SessionId" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SessionId" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Name="TEMP_ORDER_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="UserRank" Type="Byte" />
           <Property Name="customer" Type="Int32" />
@@ -355,21 +363,13 @@
           <Property Name="ASPSubID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="CouponId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="crtEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Carts" EntityType="Self.Cart" />
-          <EntitySet Name="OrderManages" EntityType="Self.OrderManage" />
-          <EntitySet Name="t_subscription" EntityType="Self.t_subscription" />
-          <EntitySet Name="UserManages" EntityType="Self.UserManage" />
-          <FunctionImport Name="CloseSymmetricKey" />
-          <FunctionImport Name="OpenSymmetricKey" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="crtModelStoreContainer" CdmEntityContainer="crtEntities">
-          <EntitySetMapping Name="Carts">
+          <EntitySetMapping Name="Cart">
             <EntityTypeMapping TypeName="crtModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
@@ -411,7 +411,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderManages">
+          <EntitySetMapping Name="OrderManage">
             <EntityTypeMapping TypeName="crtModel.OrderManage">
               <MappingFragment StoreEntitySet="OrderManage">
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
@@ -508,34 +508,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserManages">
+          <EntitySetMapping Name="UserManage">
             <EntityTypeMapping TypeName="crtModel.UserManage">
               <MappingFragment StoreEntitySet="UserManage">
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
-                <ScalarProperty Name="TEMP_ORDER_ID" ColumnName="TEMP_ORDER_ID" />
-                <ScalarProperty Name="UserRank" ColumnName="UserRank" />
-                <ScalarProperty Name="customer" ColumnName="customer" />
-                <ScalarProperty Name="AspJointID" ColumnName="AspJointID" />
-                <ScalarProperty Name="ASP_ID" ColumnName="ASP_ID" />
-                <ScalarProperty Name="AspSession" ColumnName="AspSession" />
-                <ScalarProperty Name="AspUserID" ColumnName="AspUserID" />
-                <ScalarProperty Name="PlacedOrder" ColumnName="PlacedOrder" />
-                <ScalarProperty Name="HiResImgPath" ColumnName="HiResImgPath" />
-                <ScalarProperty Name="HiResDelSchedule" ColumnName="HiResDelSchedule" />
-                <ScalarProperty Name="IsClearHiRes" ColumnName="IsClearHiRes" />
-                <ScalarProperty Name="WorkImgUrl" ColumnName="WorkImgUrl" />
-                <ScalarProperty Name="WorkDelSchedule" ColumnName="WorkDelSchedule" />
-                <ScalarProperty Name="IsClearWork" ColumnName="IsClearWork" />
-                <ScalarProperty Name="AccessDateTime" ColumnName="AccessDateTime" />
-                <ScalarProperty Name="LandingPage" ColumnName="LandingPage" />
-                <ScalarProperty Name="QuerryString" ColumnName="QuerryString" />
-                <ScalarProperty Name="UserIpAddress" ColumnName="UserIpAddress" />
-                <ScalarProperty Name="UserHostname" ColumnName="UserHostname" />
-                <ScalarProperty Name="Refer" ColumnName="Refer" />
-                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
-                <ScalarProperty Name="UserLanguage" ColumnName="UserLanguage" />
-                <ScalarProperty Name="ASPSubID" ColumnName="ASPSubID" />
                 <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+                <ScalarProperty Name="ASPSubID" ColumnName="ASPSubID" />
+                <ScalarProperty Name="UserLanguage" ColumnName="UserLanguage" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="Refer" ColumnName="Refer" />
+                <ScalarProperty Name="UserHostname" ColumnName="UserHostname" />
+                <ScalarProperty Name="UserIpAddress" ColumnName="UserIpAddress" />
+                <ScalarProperty Name="QuerryString" ColumnName="QuerryString" />
+                <ScalarProperty Name="LandingPage" ColumnName="LandingPage" />
+                <ScalarProperty Name="AccessDateTime" ColumnName="AccessDateTime" />
+                <ScalarProperty Name="IsClearWork" ColumnName="IsClearWork" />
+                <ScalarProperty Name="WorkDelSchedule" ColumnName="WorkDelSchedule" />
+                <ScalarProperty Name="WorkImgUrl" ColumnName="WorkImgUrl" />
+                <ScalarProperty Name="IsClearHiRes" ColumnName="IsClearHiRes" />
+                <ScalarProperty Name="HiResDelSchedule" ColumnName="HiResDelSchedule" />
+                <ScalarProperty Name="HiResImgPath" ColumnName="HiResImgPath" />
+                <ScalarProperty Name="PlacedOrder" ColumnName="PlacedOrder" />
+                <ScalarProperty Name="AspUserID" ColumnName="AspUserID" />
+                <ScalarProperty Name="AspSession" ColumnName="AspSession" />
+                <ScalarProperty Name="ASP_ID" ColumnName="ASP_ID" />
+                <ScalarProperty Name="AspJointID" ColumnName="AspJointID" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="UserRank" ColumnName="UserRank" />
+                <ScalarProperty Name="TEMP_ORDER_ID" ColumnName="TEMP_ORDER_ID" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -555,7 +555,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
